@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IG Vintage - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --pink: #F6A6C1; /* soft pink */
+      --blue: #1171B1;  /* user had this earlier, nice vintage blue */
+      --yellow: #FCC102; /* warm yellow */
+      --paper: #F7EDE7;
+      --accent-dark: #2b2b2b;
+      --radius: 14px;
+      --glass: rgba(255,255,255,0.6);
+    }
+
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg,var(--paper) 0%, #fff 40%);
+      color:var(--accent-dark);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+    }
+
+    /* subtle paper grain */
+    body::after{
+      content:"";position:fixed;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:0.06;background-image:radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);background-size:6px 6px;
+    }
+
+    .container{max-width:1100px;margin:0 auto}
+
+    header{
+      display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:28px
+    }
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{
+      width:64px;height:64px;border-radius:12px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--pink),var(--blue));color:white;font-weight:700;font-family:'Playfair Display';font-size:20px;box-shadow:0 6px 18px rgba(17,17,17,0.08)
+    }
+    .brand h1{font-family:'Playfair Display';font-size:20px;color:var(--accent-dark)}
+    .brand p{font-size:12px;color:#6b6b6b}
+
+    /* profile card */
+    .profile{
+      display:flex;gap:20px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.35));backdrop-filter:blur(6px);border-radius:var(--radius);padding:18px;align-items:center;box-shadow:0 8px 30px rgba(17,17,17,0.06);
+    }
+    .avatar{width:110px;height:110px;border-radius:18px;overflow:hidden;border:6px solid var(--paper);box-shadow:0 6px 18px rgba(17,17,17,0.06)}
+    .avatar img{width:100%;height:100%;object-fit:cover;filter:sepia(0.08) saturate(0.85) contrast(0.98)}
+    .profile-meta{flex:1}
+    .meta-top{display:flex;align-items:center;gap:12px}
+    .name{font-family:'Playfair Display';font-size:20px}
+    .handle{font-size:13px;color:#666}
+    .bio{margin-top:10px;font-size:14px;color:#4b4b4b;line-height:1.4;max-width:70%}
+
+    /* highlights (stories) */
+    .highlights{display:flex;gap:12px;margin-top:12px}
+    .hl{width:62px;text-align:center}
+    .hl .circle{width:62px;height:62px;border-radius:50%;display:inline-block;padding:6px;background:linear-gradient(135deg,var(--yellow),var(--pink));box-shadow:0 6px 12px rgba(17,17,17,0.06)}
+    .hl img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;border:3px solid rgba(255,255,255,0.6)}
+    .hl p{font-size:11px;margin-top:6px}
+
+    /* gallery */
+    .gallery{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{border-radius:12px;overflow:hidden;position:relative;background:white}
+    .card img{width:100%;height:100%;object-fit:cover;display:block}
+    .card .caption{position:absolute;left:12px;right:12px;bottom:12px;padding:8px;border-radius:8px;background:linear-gradient(180deg,rgba(0,0,0,0.05),rgba(0,0,0,0.18));backdrop-filter:blur(2px);color:white;font-size:13px}
+
+    /* vintage filter utility */
+    .vintage{filter:sepia(0.18) contrast(0.98) saturate(0.95)}
+
+    /* footer / actions */
+    .actions{display:flex;gap:12px;align-items:center}
+    .btn{padding:10px 14px;border-radius:12px;font-weight:600;border:none;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--blue),#2f9cd6);color:white;box-shadow:0 8px 18px rgba(17,17,17,0.08)}
+    .btn-outline{background:transparent;border:2px solid rgba(0,0,0,0.06)}
+
+    /* responsive */
+    @media (max-width:900px){
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .bio{max-width:100%}
+    }
+    @media (max-width:560px){
+      header{flex-direction:column;align-items:flex-start}
+      .profile{flex-direction:column;align-items:flex-start}
+      .meta-top{flex-direction:column;align-items:flex-start}
+      .gallery{grid-template-columns:1fr}
+    }
+
+    /* small decorative stamp */
+    .stamp{position:absolute;top:18px;right:18px;font-size:12px;padding:8px 10px;border-radius:8px;background:linear-gradient(135deg,var(--pink),var(--yellow));color:#222;box-shadow:0 6px 18px rgba(17,17,17,0.06)}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">IG</div>
+        <div>
+          <h1>IG Vintage</h1>
+          <p>Template gaya vintage — warna pink • biru • kuning</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-outline">Ikuti</button>
+        <button class="btn btn-primary">Kirim Pesan</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="profile">
+        <div class="avatar">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="avatar">
+        </div>
+        <div class="profile-meta">
+          <div class="meta-top">
+            <div>
+              <div class="name">Nama Akun Vintage</div>
+              <div class="handle">@akun.vintage</div>
+            </div>
+            <div style="margin-left:auto;text-align:right">
+              <div style="font-weight:700">1.2k</div>
+              <div style="font-size:12px;color:#777">Pengikut</div>
+            </div>
+          </div>
+          <p class="bio">Selamat datang di feed vintage. Fokus pada estetika, warna hangat, dan cerita sederhana. Konten ini dibuat untuk memberi nuansa nostalgia — cocok untuk moodboard dan inspirasi visual.</p>
+
+          <div class="highlights">
+            <div class="hl">
+              <div class="circle"><img src="https://images.unsplash.com/photo-1518894785785-dc8b6a0f9d7f?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="hl1"></div>
+              <p>Travels</p>
+            </div>
+            <div class="hl">
+              <div class="circle"><img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="hl2"></div>
+              <p>Tips</p>
+            </div>
+            <div class="hl">
+              <div class="circle"><img src="https://images.unsplash.com/photo-1499083097717-a156f5f5d7d1?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="hl3"></div>
+              <p>Music</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div style="position:relative;margin-top:22px">
+        <div class="stamp">EST. 1996</div>
+        <section class="gallery vintage">
+          <article class="card"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="img1"><div class="caption">Momen pagi yang hangat</div></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="img2"><div class="caption">Siluet kota</div></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="img3"><div class="caption">Catatan kecil</div></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="img4"><div class="caption">Tekstur dan warna</div></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="img5"><div class="caption">Koleksi benda</div></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="img6"><div class="caption">Senja yang tenang</div></article>
+        </section>
+      </div>
+
+    </main>
+
+    <footer style="margin-top:26px;text-align:center;color:#666;font-size:13px">Template gratis • Ubah teks dan gambar sesuai kebutuhan</footer>
+  </div>
+</body>
+</html>
